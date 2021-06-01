@@ -9,7 +9,8 @@ var gameOver = false;
 var scoreText;
 var game;
 var config;
-var sounds = {};
+var sounds = {};//objeto vacio
+
 var resizeGame = function () {
     let canvas = document.querySelector('canvas');
     const { innerWidth, innerHeight } = window; //object destructuring
@@ -176,6 +177,8 @@ class Juego extends Phaser.Scene {
 
         this.physics.add.collider(player, bombs, this.hitBomb, null, this);
 
+        console.log('this', this);
+
         sounds.death = this.sound.add("death");
         sounds.run = this.sound.add("run");
         sounds.pick = this.sound.add("pick");
@@ -284,9 +287,5 @@ class Fin extends Phaser.Scene {
       let restartButton = this.add.text(700, 500, 'Restart', { fontFamily: 'Arial', fontSize: 20, color: '#000000' })
       .setInteractive()
       .on('pointerdown', () => this.scene.start('juego') );
-    }
-
-    update() {
-
     }
 }
