@@ -3,6 +3,13 @@ class Scene2 extends Phaser.Scene {
       super('juego');
     }
 
+    preload(){
+        this.load.image('sky', 'assets/sky.png');
+        this.load.image('ground', 'assets/platform.png');
+        this.load.image('star', 'assets/star.png');
+        this.load.image('bomb', 'assets/bomb.png');
+    }
+
     create ()
     {
         //  A simple background for our game
@@ -47,13 +54,17 @@ class Scene2 extends Phaser.Scene {
             
             child.setBounceY(Phaser.Math.FloatBetween(0.6, 0.9));
             child.x += Phaser.Math.FloatBetween(-15, 15) 
-            if (Phaser.Math.FloatBetween(0, 1) > 0.5){
-                child.score = 15;
-                child.setTint(0xff0000);
+            
+            if (Phaser.Math.FloatBetween(0, 1) > 0.8){
+                child.score = 15;                
+                child.setTint(0xff00ff);
+
+                child.enemy = true
             } 
             else
             {
                 child.score = 10;
+                child.enemy = false
             }
             
 
@@ -152,6 +163,10 @@ class Scene2 extends Phaser.Scene {
             level += 1
             initialTime = 30 - level;
         }
+
+        if (star.enemy){
+            this.gameOver()
+        }
     }
 
 
@@ -170,8 +185,8 @@ class Scene2 extends Phaser.Scene {
         player.anims.play('turn');        
 
         var gameOverButton = this.add.text(700, 500, 'Game Over', { fontFamily: 'Arial', fontSize: 70, color: '#ff0000' })
-        .setInteractive()
-        .on('pointerdown', () => this.scene.start('creditos'));
+        gameOverButton.setInteractive()
+        gameOverButton.on('pointerdown', () => this.scene.start('creditos'));
         Phaser.Display.Align.In.Center(gameOverButton, this.add.zone(400, 300, 800, 600));    
     }
     
