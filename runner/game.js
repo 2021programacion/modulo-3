@@ -14,7 +14,10 @@ let config = {
 
     // physics settings
     physics: {
-        default: "arcade"
+        default: "arcade",
+        arcade: {
+            debug: true
+        }
     }
 }
 
