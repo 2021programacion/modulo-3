@@ -123,7 +123,8 @@ class playGame extends Phaser.Scene{
         // checking for input
         this.input.on("pointerdown", this.jump, this);
 
-        this.add.text(20, 0, "Press SPACEBAR to enter fullscreen", {
+        //"Press SPACEBAR to enter fullscreen"
+        this.add.text(20, 0, "", {
             fontFamily: "Arial",
             fontSize: 64,
             color: "#ffffff"
