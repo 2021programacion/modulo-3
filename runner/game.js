@@ -5,8 +5,8 @@ let config = {
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 1334,
-        height: 750,
+        width: 1366,
+        height: 768,
       },
     
     scene: [playGame],

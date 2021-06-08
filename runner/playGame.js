@@ -3,10 +3,14 @@ class playGame extends Phaser.Scene{
       super("PlayGame");
   }
   preload(){
+      this.load.image("sky", "assets/sky.png");
       this.load.image("platform", "assets/platform.png");
       this.load.image("player", "assets/player.png");
   }
   create(){
+      let sky = this.add.image(game.config.width / 2, game.config.height / 2, 'sky');
+      sky.displayWidth = game.config.width
+      sky.displayHeight = game.config.height
 
       // group with all active platforms.
       this.platformGroup = this.add.group({
@@ -14,6 +18,7 @@ class playGame extends Phaser.Scene{
           // once a platform is removed, it's added to the pool
           removeCallback: function(platform){
               platform.scene.platformPool.add(platform)
+              console.log('add plataform pool')
           }
       });
 
@@ -23,6 +28,7 @@ class playGame extends Phaser.Scene{
           // once a platform is removed from the pool, it's added to the active platforms group
           removeCallback: function(platform){
               platform.scene.platformGroup.add(platform)
+              console.log('add plataform')
           }
       });
 
