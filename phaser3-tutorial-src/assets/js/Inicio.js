@@ -14,6 +14,8 @@ class Inicio extends Phaser.Scene {
         this.load.audio("death", ["assets/sounds/death.mp3", "assets/sounds/death.ogg"]);
         this.load.audio("run", ["assets/sounds/run.mp3", "assets/sounds/run.ogg"]);
         this.load.audio("pick", ["assets/sounds/pick.mp3", "assets/sounds/pick.ogg"]);
+
+        
     }
 
     create() {
